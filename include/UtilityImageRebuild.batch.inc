@@ -19,15 +19,15 @@ function _utility_image_rebuild_batch_process_entity($table, $field_name, $id, &
     file_save($file_object);
     // Update the file demensions.
     db_update($table)->fields(array(
-        $field_name . '_width' => $info['width'],
-        $field_name . '_height' => $info['height']
+      $field_name . '_width' => $info['width'],
+      $field_name . '_height' => $info['height']
     ))->condition($field_name . '_fid', $id)->execute();
   }
   // Update batch progress information.
-  if (! isset($context['results']['processed'])) {
+  if (!isset($context['results']['processed'])) {
     $context['results']['processed'] = 0;
   }
-  $context['results']['processed'] ++;
+  $context['results']['processed']++;
   $context['message'] = 'We are processing with file with fid - ' . $id;
 }
 
@@ -41,8 +41,8 @@ function _utility_image_rebuild_batch_finished($success, $results, $operations) 
   else {
     $error_operation = reset($operations);
     $message = t('An error occurred while processing %error_operation with arguments: @arguments', array(
-        '%error_operation' => $error_operation[0],
-        '@arguments' => print_r($error_operation[1], TRUE)
+      '%error_operation' => $error_operation[0],
+      '@arguments' => print_r($error_operation[1], TRUE)
     ));
   }
   drupal_set_message($message);

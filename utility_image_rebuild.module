@@ -17,14 +17,14 @@ function utility_image_rebuild_form_field_ui_field_edit_form_alter(&$form, $form
     return;
   }
   $form['utility_image_rebuild'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Utility Tool - Image Rebuild'),
-      '#description' => t('Rebuild the image information in image field then update the values into database.')
+    '#type' => 'fieldset',
+    '#title' => t('Utility Tool - Image Rebuild'),
+    '#description' => t('Rebuild the image information in image field then update the values into database.')
   );
   $form['utility_image_rebuild']['utility_image_rebuild_run'] = array(
-      '#type' => 'submit',
-      '#value' => t('Run the Image Rebuild'),
-      '#suffix' => '<span class="description">' . t('Could take time and could put an increased load on your server.') . '</span>'
+    '#type' => 'submit',
+    '#value' => t('Run the Image Rebuild'),
+    '#suffix' => '<span class="description">' . t('Could take time and could put an increased load on your server.') . '</span>'
   );
   $form['#submit'][] = '_utility_image_rebuild_form_submit';
 }
@@ -33,7 +33,7 @@ function utility_image_rebuild_form_field_ui_field_edit_form_alter(&$form, $form
  * Form callback.
  */
 function _utility_image_rebuild_form_submit($form, &$form_state) {
-  $instance = &$form_state['values']['instance'];
+  $instance = & $form_state['values']['instance'];
   if ($form_state['values']['op'] == t('Run the Image Rebuild')) {
     _utility_image_rebuild_process($instance);
   }
@@ -46,41 +46,41 @@ function _utility_image_rebuild_process($instance) {
   $entity_type = $instance['entity_type'];
   $bundle = $instance['bundle'];
   $field_name = $instance['field_name'];
-  
+
   // Get fids
-  $table_field = check_plain($field_name . '_fid');
-  $table = check_plain('field_data_' . $field_name);
+  $table_field = check_plain($field_name) . '_fid';
+  $table = 'field_data_' . check_plain($field_name);
   $entity_results = db_query('select ' . $table_field . ' from {' . $table . '} WHERE entity_type = :entity_type AND bundle = :type', array(
-      ':entity_type' => $entity_type,
-      ':type' => $bundle
+    ':entity_type' => $entity_type,
+    ':type' => $bundle
   ));
   $entity_total = $entity_results->rowCount();
   if ($entity_total > 0) {
     $entity_ids = $entity_results->fetchCol();
     // Using Batch API for bulk processing.
     $batch = array(
-        'title' => t('Utility Tool - Image Rebuild'),
-        'operations' => array(),
-        'finished' => '_utility_image_rebuild_batch_finished',
-        'init_message' => t('Initializing...'),
-        'progress_message' => t('Processing @current out of @total instances.'),
-        'error_message' => t('Processing encountered an error.')
+      'title' => t('Utility Tool - Image Rebuild'),
+      'operations' => array(),
+      'finished' => '_utility_image_rebuild_batch_finished',
+      'init_message' => t('Initializing...'),
+      'progress_message' => t('Processing @current out of @total instances.'),
+      'error_message' => t('Processing encountered an error.')
     );
-    
-    foreach ( $entity_ids as $id ) {
+
+    foreach ($entity_ids as $id) {
       // We create a new process for each entity, as a means of keeping
       // the.
       // batch process more transparent.
       $batch['operations'][] = array(
-          '_utility_image_rebuild_batch_process_entity',
-          array(
-              $table,
-              $field_name,
-              $id
-          )
+        '_utility_image_rebuild_batch_process_entity',
+        array(
+          $table,
+          $field_name,
+          $id
+        )
       );
     }
-    
+
     batch_set($batch);
     batch_process();
   }
