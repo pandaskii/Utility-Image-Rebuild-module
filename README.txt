@@ -18,13 +18,13 @@ Current Maintainer: Joseph Z (joseph@gotouch.com.au)
 
 This module is a small utility tool.
 
-It can help you rebuild the image information in the image field.
+It can help you rebuild the image(s) information in the image field.
 
 The two common cases are:
 
-1. You replace the image manually in server.
-2. You update the image with physical location in database
-such as from public://publication/1.jpg to public://article/1.jpg
+1. You replace the image(s) manually in server.
+2. You update the image(s) with physical location in database
+such as from public://publication/1.jpg to public://article/01.jpg
 
 In particular the {file_managed.filesize} and the {file_managed.timestamp}
 columns will be incorrect.
