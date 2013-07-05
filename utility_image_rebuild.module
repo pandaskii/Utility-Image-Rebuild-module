@@ -50,11 +50,9 @@ function _utility_image_rebuild_process($instance) {
   // Get fids.
   $table_field = $field_name . '_fid';
   $table = 'field_data_' . $field_name;
-  $query = 'select ' . check_plain($table_field) . ' from {' . check_plain($table) . '} WHERE entity_type = :entity_type AND bundle = :type', array(
-    ':entity_type' => $entity_type,
-    ':type' => $bundle,
-  );
-  $entity_results = db_query($query);
+  $query = db_select(check_plain($table))->fields(check_plain($table), array(check_plain($table_field)));
+  $query->condition('entity_type', check_plain($entity_type))->condition('bundle', check_plain($bundle));
+  $entity_results = $query->execute();
   $entity_total = $entity_results->rowCount();
   if ($entity_total > 0) {
     $entity_ids = $entity_results->fetchCol();
