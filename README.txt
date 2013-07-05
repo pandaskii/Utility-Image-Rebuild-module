@@ -29,7 +29,8 @@ The two common cases are:
 Installation
 ============
 
-The Utility Image Rebuild module is dependent on two Drupal 7 core modules: file, image
+The Utility Image Rebuild module 
+is dependent on two Drupal 7 core modules: file, image
 
 Installation is quite simple,
 Enable the module or you can use Drush: drush pm-enable utility_image_rebuild.
