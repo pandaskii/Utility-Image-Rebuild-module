@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Utility-image-rebuild-module by jozhao</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jozhao/Utility-Image-Rebuild-module">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/jozhao/Utility-Image-Rebuild-module/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/jozhao/Utility-Image-Rebuild-module/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Utility-image-rebuild-module</h1>
+          <p>Drupal module - Utility Image Rebuild module</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/jozhao">jozhao</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="utility-image-rebuild-module" class="anchor" href="#utility-image-rebuild-module"><span class="octicon octicon-link"></span></a>Utility-Image-Rebuild-module</h1>
+
+<p>Drupal module - Utility Image Rebuild module</p>
+
+<p>Drupal Core: 7.x</p>
+
+<h1>
+<a name="contents-of-this-file" class="anchor" href="#contents-of-this-file"><span class="octicon octicon-link"></span></a>CONTENTS OF THIS FILE</h1>
+
+<ul>
+<li>Introduction</li>
+<li>Installation</li>
+</ul><h1>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>Current Maintainer: Joseph Z (<a href="mailto:joseph@gotouch.com.au">joseph@gotouch.com.au</a>)</p>
+
+<p>This module is a small utility tool.</p>
+
+<p>It can help you rebuild the image information in the image field.</p>
+
+<p>The two common cases are:</p>
+
+<ol>
+<li>You replace the image manually in server.</li>
+<li>You update the image with physical location in database
+such as from public://publication/1.jpg to public://article/1.jpg</li>
+</ol><p>In particular the {file_managed.filesize} and the {file_managed.timestamp}
+columns will be incorrect.
+And the image dimension in field_data_filename table will be incorrect as well.</p>
+
+<p>This module can rebuild such information, then update them in database.</p>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>The Utility Image Rebuild module 
+is dependent on two Drupal 7 core modules: file, image</p>
+
+<p>Installation is quite simple,
+Enable the module or you can use Drush: drush pm-enable utility_image_rebuild.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
