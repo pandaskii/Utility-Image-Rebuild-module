@@ -19,12 +19,12 @@ function utility_image_rebuild_form_field_ui_field_edit_form_alter(&$form, $form
   $form['utility_image_rebuild'] = array(
     '#type' => 'fieldset',
     '#title' => t('Utility Tool - Image Rebuild'),
-    '#description' => t('Rebuild the image information in image field then update the values into database.')
+    '#description' => t('Rebuild the image information in image field then update the values into database.'),
   );
   $form['utility_image_rebuild']['utility_image_rebuild_run'] = array(
     '#type' => 'submit',
     '#value' => t('Run the Image Rebuild'),
-    '#suffix' => '<span class="description">' . t('Could take time and could put an increased load on your server.') . '</span>'
+    '#suffix' => '<span class="description">' . t('Could take time and could put an increased load on your server.') . '</span>',
   );
   $form['#submit'][] = '_utility_image_rebuild_form_submit';
 }
@@ -47,12 +47,12 @@ function _utility_image_rebuild_process($instance) {
   $bundle = $instance['bundle'];
   $field_name = $instance['field_name'];
 
-  // Get fids
-  $table_field = check_plain($field_name) . '_fid';
-  $table = 'field_data_' . check_plain($field_name);
-  $entity_results = db_query('select ' . $table_field . ' from {' . $table . '} WHERE entity_type = :entity_type AND bundle = :type', array(
+  // Get fids.
+  $table_field = $field_name . '_fid';
+  $table = 'field_data_' . $field_name;
+  $entity_results = db_query('select ' . check_plain($table_field) . ' from {' . check_plain($table) . '} WHERE entity_type = :entity_type AND bundle = :type', array(
     ':entity_type' => $entity_type,
-    ':type' => $bundle
+    ':type' => $bundle,
   ));
   $entity_total = $entity_results->rowCount();
   if ($entity_total > 0) {
@@ -64,7 +64,7 @@ function _utility_image_rebuild_process($instance) {
       'finished' => '_utility_image_rebuild_batch_finished',
       'init_message' => t('Initializing...'),
       'progress_message' => t('Processing @current out of @total instances.'),
-      'error_message' => t('Processing encountered an error.')
+      'error_message' => t('Processing encountered an error.'),
     );
 
     foreach ($entity_ids as $id) {
@@ -76,8 +76,8 @@ function _utility_image_rebuild_process($instance) {
         array(
           $table,
           $field_name,
-          $id
-        )
+          $id,
+        ),
       );
     }
 
