@@ -12,7 +12,7 @@ function _utility_image_rebuild_batch_process_entity($table, $field_name, $id, &
   // Load existing file information.
   $file = file_load($id);
   // Check if the information is object.
-  if(is_object($file)) {
+  if (is_object($file)) {
     $info = image_get_info($file->uri);
     if (is_array($info)) {
       $file_object = $file;
