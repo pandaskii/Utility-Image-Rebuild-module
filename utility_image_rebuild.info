@@ -1,0 +1,6 @@
+name = Utility Image Rebuild
+description = Rebuild the image information.
+core = 7.x
+package = Utility
+dependencies[] = file
+dependencies[] = image
