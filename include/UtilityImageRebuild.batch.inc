@@ -9,19 +9,23 @@
  * Runs the batch process for one entity.
  */
 function _utility_image_rebuild_batch_process_entity($table, $field_name, $id, &$context) {
+  // Load existing file information.
   $file = file_load($id);
-  $file_object = $file;
-  $file_object->filename = drupal_basename($file->uri);
-  $file_object->filemime = file_get_mimetype($file->uri);
-  $info = image_get_info($file->uri);
-  if (is_array($info)) {
-    // Update the filename and filemine information.
-    file_save($file_object);
-    // Update the file demensions.
-    db_update($table)->fields(array(
-      $field_name . '_width' => $info['width'],
-      $field_name . '_height' => $info['height'],
-    ))->condition($field_name . '_fid', $id)->execute();
+  // Check if the information is object.
+  if(is_object($file)) {
+    $info = image_get_info($file->uri);
+    if (is_array($info)) {
+      $file_object = $file;
+      $file_object->filename = drupal_basename($file->uri);
+      $file_object->filemime = file_get_mimetype($file->uri);
+      // Update the filename and filemine information.
+      file_save($file_object);
+      // Update the file demensions.
+      db_update($table)->fields(array(
+        $field_name . '_width' => $info['width'],
+        $field_name . '_height' => $info['height'],
+      ))->condition($field_name . '_fid', $id)->execute();
+    }
   }
   // Update batch progress information.
   if (!isset($context['results']['processed'])) {
