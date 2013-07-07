@@ -18,7 +18,8 @@ Current Maintainer: Joseph Z (joseph@gotouch.com.au)
 
 This module is a small utility tool.
 
-It can help you rebuild the image(s) information in the image field within certain content type.
+It can help you rebuild the image(s) information in the image field
+within certain content type.
 
 The two common cases are:
 
