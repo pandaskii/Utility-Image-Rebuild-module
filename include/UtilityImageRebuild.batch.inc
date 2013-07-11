@@ -40,7 +40,7 @@ function _utility_image_rebuild_batch_process_entity($table, $field_name, $id, &
  */
 function _utility_image_rebuild_batch_finished($success, $results, $operations) {
   if ($success) {
-    $message = 'The images have been rebuilt by Utility Tool - Image Rebuild.';
+    $message = t('The images have been rebuilt by Utility Tool - Image Rebuild.');
   }
   else {
     $error_operation = reset($operations);
