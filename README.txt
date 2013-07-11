@@ -21,13 +21,12 @@ This module is a small utility tool.
 It can help you rebuild the image(s) information in the image field
 within certain content type.
 
-The three common cases are:
+The two common cases are:
 
 1. You replace the image(s) manually in server
 such as cover.jpg from the small size to large size.
-2. You update the image(s) format manually in server and database 
-such as from cover.jpg to cover.png.
-2. You update the image(s) path in database
+2. You update the image(s) name or path in database
+and replace the files manually
 such as from public://publication/1.jpg to public://article/01.jpg
 
 In particular the {file_managed.filesize} and the {file_managed.timestamp}
