@@ -50,4 +50,6 @@ function _utility_image_rebuild_batch_finished($success, $results, $operations) 
     ));
   }
   drupal_set_message($message);
+  // Add watchdog to log the operation status.
+  watchdog('Utility Image Rebuild', ':message', array(':message' => $message), WATCHDOG_INFO);
 }
