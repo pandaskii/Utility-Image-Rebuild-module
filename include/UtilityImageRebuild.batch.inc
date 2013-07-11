@@ -41,6 +41,7 @@ function _utility_image_rebuild_batch_process_entity($table, $field_name, $id, &
 function _utility_image_rebuild_batch_finished($success, $results, $operations) {
   if ($success) {
     $message = t('The images have been rebuilt by Utility Tool - Image Rebuild.');
+    $severity = WATCHDOG_INFO;
   }
   else {
     $error_operation = reset($operations);
@@ -48,8 +49,9 @@ function _utility_image_rebuild_batch_finished($success, $results, $operations) 
       '%error_operation' => $error_operation[0],
       '@arguments' => print_r($error_operation[1], TRUE),
     ));
+    $severity = WATCHDOG_ERROR;
   }
   drupal_set_message($message);
   // Add watchdog to log the operation status.
-  watchdog('Utility Image Rebuild', ':message', array(':message' => $message), WATCHDOG_INFO);
+  watchdog('Utility Image Rebuild', ':message', array(':message' => $message), $severity);
 }
