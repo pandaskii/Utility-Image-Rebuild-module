@@ -32,7 +32,9 @@ function _utility_image_rebuild_batch_process_entity($table, $field_name, $id, &
     $context['results']['processed'] = 0;
   }
   $context['results']['processed']++;
-  $context['message'] = 'We are processing the file with fid - ' . $id;
+  $context['message'] = t('We are processing the file with fid: @id', array(
+    '@id' => $id,
+  ));
 }
 
 /**
