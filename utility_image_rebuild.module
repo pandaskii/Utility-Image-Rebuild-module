@@ -5,9 +5,6 @@
  * Utility Image Rebuild module.
  */
 
-// Load batch function.
-module_load_include('inc', 'utility_image_rebuild', 'include/UtilityImageRebuild.batch');
-
 /**
  * Implements hook_form_FORMID_alter().
  */
@@ -35,6 +32,7 @@ function utility_image_rebuild_form_field_ui_field_edit_form_alter(&$form, $form
 function _utility_image_rebuild_form_submit($form, &$form_state) {
   $instance = & $form_state['values']['instance'];
   if ($form_state['values']['op'] == t('Run the Image Rebuild')) {
+    // Process the batch.
     _utility_image_rebuild_process($instance);
   }
 }
@@ -64,6 +62,7 @@ function _utility_image_rebuild_process($instance) {
       'init_message' => t('Initializing...'),
       'progress_message' => t('Processing @current out of @total instances.'),
       'error_message' => t('Processing encountered an error.'),
+      'file' => drupal_get_path('module', 'utility_image_rebuild') . '/include/UtilityImageRebuild.batch.inc',
     );
 
     foreach ($entity_ids as $id) {
