@@ -16,12 +16,12 @@ function utility_image_rebuild_form_field_ui_field_edit_form_alter(&$form, $form
   $form['utility_image_rebuild'] = array(
     '#type' => 'fieldset',
     '#title' => t('Utility Tool - Image Rebuild'),
-    '#description' => t('Rebuild the image information in image field then update the values into database.'),
+    '#description' => t('Rebuild the image information in image field, then update the values in the database.'),
   );
   $form['utility_image_rebuild']['utility_image_rebuild_run'] = array(
     '#type' => 'submit',
     '#value' => t('Run the Image Rebuild'),
-    '#suffix' => '<span class="description">' . t('Could take time and could put an increased load on your server.') . '</span>',
+    '#suffix' => '<span class="description">' . t('This could take time and might put an increased load on your server.') . '</span>',
   );
   $form['#submit'][] = '_utility_image_rebuild_form_submit';
 }
