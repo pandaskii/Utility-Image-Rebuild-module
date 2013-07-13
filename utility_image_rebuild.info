@@ -1,6 +1,6 @@
 name = Utility Image Rebuild
-description = A small utility tool to help you rebuild information stored in the
-              database image(s) columns.
+description = "A small utility tool to help you rebuild information stored in the
+              database image(s) columns."
 core = 7.x
 package = Utility
 dependencies[] = file
